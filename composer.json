@@ -3,7 +3,7 @@
     "license": "MIT",
     "require": {
         "ext-json": "*",
-        "bagisto-packages/shop": "dev-master",
+        "bagisto-packages/shop": "^1.0",
         "barryvdh/laravel-dompdf": "^0.8.7",
         "konekt/concord": "^1.8",
         "maatwebsite/excel": "^3.1"
