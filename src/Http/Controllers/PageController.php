@@ -58,7 +58,7 @@ class PageController extends Controller
         $data = request()->all();
 
         $this->validate(request(), [
-            'url_key' => ['required', 'unique:cms_page_translations,url_key', new \Webkul\Core\Contracts\Validations\Slug],
+            'url_key' => ['required', 'unique:cms_page_translations,url_key', new \BagistoPackages\Shop\Contracts\Validations\Slug],
             'page_title' => 'required',
             'channels' => 'required',
             'html_content' => 'required',
@@ -99,7 +99,7 @@ class PageController extends Controller
         $locale = request()->get('locale') ?: app()->getLocale();
 
         $this->validate(request(), [
-            $locale . '.url_key' => ['required', new \Webkul\Core\Contracts\Validations\Slug, function ($attribute, $value, $fail) use ($id) {
+            $locale . '.url_key' => ['required', new \BagistoPackages\Shop\Contracts\Validations\Slug, function ($attribute, $value, $fail) use ($id) {
                 if (!$this->cmsRepository->isUrlKeyUnique($id, $value)) {
                     $fail(trans('admin::app.response.already-taken', ['name' => 'Page']));
                 }

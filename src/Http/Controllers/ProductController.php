@@ -36,7 +36,7 @@ class ProductController extends Controller
     /**
      * ProductDownloadableLinkRepository object
      *
-     * @var \Webkul\Product\Repositories\ProductDownloadableLinkRepository
+     * @var ProductDownloadableLinkRepository
      */
     protected $productDownloadableLinkRepository;
 
