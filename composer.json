@@ -1,0 +1,26 @@
+{
+    "name": "bagisto-packages/admin",
+    "license": "MIT",
+    "require": {
+        "ext-json": "*",
+        "bagisto-packages/shop": "dev-master",
+        "barryvdh/laravel-dompdf": "^0.8.7",
+        "konekt/concord": "^1.8",
+        "maatwebsite/excel": "^3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "BagistoPackages\\Admin\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

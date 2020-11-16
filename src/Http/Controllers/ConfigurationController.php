@@ -1,0 +1,143 @@
+<?php
+
+namespace BagistoPackages\Admin\Http\Controllers;
+
+use BagistoPackages\Shop\Tree;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Storage;
+use BagistoPackages\Admin\Http\Requests\ConfigurationForm;
+use BagistoPackages\Shop\Repositories\CoreConfigRepository;
+
+class ConfigurationController extends Controller
+{
+    /**
+     * CoreConfigRepository object
+     *
+     * @var CoreConfigRepository
+     */
+    protected $coreConfigRepository;
+
+    /**
+     *
+     * @var array
+     */
+    protected $configTree;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @param CoreConfigRepository $coreConfigRepository
+     * @return void
+     */
+    public function __construct(CoreConfigRepository $coreConfigRepository)
+    {
+        $this->middleware('admin');
+
+        $this->coreConfigRepository = $coreConfigRepository;
+
+        $this->prepareConfigTree();
+    }
+
+    /**
+     * Prepares config tree
+     *
+     * @return void
+     */
+    public function prepareConfigTree()
+    {
+        $tree = Tree::create();
+
+        foreach (config('core') as $item) {
+            $tree->add($item);
+        }
+
+        $tree->items = core()->sortItems($tree->items);
+
+        $this->configTree = $tree;
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
+     */
+    public function index()
+    {
+        $slugs = $this->getDefaultConfigSlugs();
+
+        if (count($slugs)) {
+            return redirect()->route('admin.configuration.index', $slugs);
+        }
+
+        return view('admin::configuration.index', ['config' => $this->configTree]);
+    }
+
+    /**
+     * Returns slugs
+     *
+     * @return array
+     */
+    public function getDefaultConfigSlugs()
+    {
+        if (!request()->route('slug')) {
+            $firstItem = current($this->configTree->items);
+            $secondItem = current($firstItem['children']);
+
+            return $this->getSlugs($secondItem);
+        }
+
+        if (!request()->route('slug2')) {
+            $secondItem = current($this->configTree->items[request()->route('slug')]['children']);
+
+            return $this->getSlugs($secondItem);
+        }
+
+        return [];
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param ConfigurationForm $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(ConfigurationForm $request)
+    {
+        Event::dispatch('core.configuration.save.before');
+
+        $this->coreConfigRepository->create(request()->all());
+
+        Event::dispatch('core.configuration.save.after');
+
+        session()->flash('success', trans('admin::app.configuration.save-message'));
+
+        return redirect()->back();
+    }
+
+    /**
+     * download the file for the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function download()
+    {
+        $path = request()->route()->parameters()['path'];
+
+        $fileName = 'configuration/' . $path;
+
+        $config = $this->coreConfigRepository->findOneByField('value', $fileName);
+
+        return Storage::download($config['value']);
+    }
+
+    /**
+     * @param string $secondItem
+     * @return array
+     */
+    private function getSlugs($secondItem): array
+    {
+        $temp = explode('.', $secondItem['key']);
+
+        return ['slug' => current($temp), 'slug2' => end($temp)];
+    }
+}
