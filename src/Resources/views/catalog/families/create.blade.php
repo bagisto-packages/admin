@@ -214,8 +214,8 @@
     </script>
 
     <script>
-        let groups =;
-        var custom_attributes = @json($custom_attributes);
+        let groups = @json($attributeFamily ? $attributeFamily->attribute_groups : []);
+        let custom_attributes = @json($custom_attributes);
 
         Vue.component('group-form', {
 
