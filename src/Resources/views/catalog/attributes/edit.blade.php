@@ -464,25 +464,25 @@
                 @foreach ($attribute->options as $option)
                     this.optionRowCount++;
 
-                let row = {
-                    'id': @json($option->id),
-                    'admin_name': @json($option->admin_name),
-                    'sort_order': @json($option->sort_order),
-                    'swatch_value': @json($option->swatch_value),
-                    'swatch_value_url': @json($option->swatch_value_url),
-                    'notRequired': '',
-                    'locales': {}
-                };
+                    var row = {
+                        'id': @json($option->id),
+                        'admin_name': @json($option->admin_name),
+                        'sort_order': @json($option->sort_order),
+                        'swatch_value': @json($option->swatch_value),
+                        'swatch_value_url': @json($option->swatch_value_url),
+                        'notRequired': '',
+                        'locales': {}
+                    };
 
-                @if (empty($option->label))
-                    this.isNullOptionChecked = true;
-                this.idNullOption = @json($option->id);
-                row['notRequired'] = true;
-                @endif
+                    @if (empty($option->label))
+                        this.isNullOptionChecked = true;
+                        this.idNullOption = @json($option->id);
+                        row['notRequired'] = true;
+                    @endif
 
                     @foreach (app('BagistoPackages\Shop\Repositories\LocaleRepository')->all() as $locale)
-                    row['locales']['{{ $locale->code }}'] = @json($option->translate($locale->code)['label'] ?? '');
-                @endforeach
+                        row['locales']['{{ $locale->code }}'] = @json($option->translate($locale->code)['label'] ?? '');
+                    @endforeach
 
                     this.optionRows.push(row);
                 @endforeach
