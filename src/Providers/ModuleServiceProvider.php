@@ -13,19 +13,27 @@ class ModuleServiceProvider extends BaseModuleServiceProvider
     {
         parent::boot();
 
-        config(['auth.providers' => array_merge(config('auth.providers'), [
+        config()->set('auth.providers', array_merge(config('auth.providers'), [
             'admins' => [
                 'driver' => 'eloquent',
                 'model' => Admin::class
             ]
-        ])]);
+        ]));
 
-        config(['auth.guards' => array_merge(config('auth.guards'), [
+        config()->set('auth.guards', array_merge(config('auth.guards'), [
             'admin' => [
                 'driver' => 'session',
                 'provider' => 'admins'
             ]
-        ])]);
+        ]));
+
+        config()->set('auth.passwords', array_merge(config('auth.passwords'), [
+            'admins' => [
+                'provider' => 'admins',
+                'table' => 'admin_password_resets',
+                'expire' => 60,
+            ]
+        ]));
 
         $this->composeView();
 
