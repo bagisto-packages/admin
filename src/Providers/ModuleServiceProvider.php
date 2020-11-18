@@ -107,20 +107,20 @@ class ModuleServiceProvider extends BaseModuleServiceProvider
             $permissionType = auth()->guard('admin')->user()->role->permission_type;
             $allowedPermissions = auth()->guard('admin')->user()->role->permissions;
 
-            foreach (config('menu.admin') as $index => $item) {
+            foreach (config('menu.admin.items') as $index => $item) {
                 if (!bouncer()->hasPermission($item['key'])) {
                     continue;
                 }
 
-                if ($index + 1 < count(config('menu.admin')) && $permissionType != 'all') {
-                    $permission = config('menu.admin')[$index + 1];
+                if ($index + 1 < count(config('menu.admin.items')) && $permissionType != 'all') {
+                    $permission = config('menu.admin.items')[$index + 1];
 
                     if (substr_count($permission['key'], '.') == 2 && substr_count($item['key'], '.') == 1) {
                         foreach ($allowedPermissions as $key => $value) {
                             if ($item['key'] == $value) {
                                 $neededItem = $allowedPermissions[$key + 1];
 
-                                foreach (config('menu.admin') as $key1 => $findMatced) {
+                                foreach (config('menu.admin.items') as $key1 => $findMatced) {
                                     if ($findMatced['key'] == $neededItem) {
                                         $item['route'] = $findMatced['route'];
                                     }
