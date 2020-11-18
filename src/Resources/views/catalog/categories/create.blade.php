@@ -233,7 +233,7 @@
 @stop
 
 @push('scripts')
-    <script src="{{ asset('vendor/BagistoPackages/admin/assets/js/tinyMCE/tinymce.min.js') }}"></script>
+    <script src="{{ asset('vendor/packages/admin/assets/js/tinyMCE/tinymce.min.js') }}"></script>
 
     <script type="text/x-template" id="description-template">
 

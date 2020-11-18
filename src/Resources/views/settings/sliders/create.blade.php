@@ -95,7 +95,7 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('vendor/BagistoPackages/admin/assets/js/tinyMCE/tinymce.min.js') }}"></script>
+    <script src="{{ asset('vendor/packages/admin/assets/js/tinyMCE/tinymce.min.js') }}"></script>
 
     <script>
         $(document).ready(function () {
