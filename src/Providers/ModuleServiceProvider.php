@@ -87,7 +87,7 @@ class ModuleServiceProvider extends BaseModuleServiceProvider
     {
         $this->mergeConfigFrom(dirname(__DIR__) . '/Resources/config/menu.php', 'menu.admin');
         $this->mergeConfigFrom(dirname(__DIR__) . '/Resources/config/acl.php', 'acl');
-        $this->mergeConfigFrom(dirname(__DIR__) . '/Resources/config/system.php', 'core');
+        $this->mergeConfigFrom(dirname(__DIR__) . '/Resources/config/core.php', 'core');
     }
 
     protected function registerBouncer()
