@@ -3,13 +3,18 @@
     "license": "MIT",
     "require": {
         "bagisto-packages/shop": "^1.0",
+        "bagisto-packages/ui": "^1.0",
         "barryvdh/laravel-dompdf": "^0.8.7",
         "konekt/concord": "^1.8",
         "maatwebsite/excel": "^3.1"
     },
     "autoload": {
+        "files": [
+            "src/Http/helpers.php"
+        ],
         "psr-4": {
-            "BagistoPackages\\Admin\\": "src/"
+            "BagistoPackages\\Admin\\": "src/",
+            "BagistoPackages\\Admin\\Seeds\\": "src/Resources/database/seeds"
         }
     },
     "config": {

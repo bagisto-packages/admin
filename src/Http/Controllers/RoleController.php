@@ -3,7 +3,7 @@
 namespace BagistoPackages\Admin\Http\Controllers;
 
 use Illuminate\Support\Facades\Event;
-use BagistoPackages\Shop\Repositories\RoleRepository;
+use BagistoPackages\Admin\Repositories\RoleRepository;
 
 class RoleController extends Controller
 {

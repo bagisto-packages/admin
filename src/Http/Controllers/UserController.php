@@ -2,13 +2,13 @@
 
 namespace BagistoPackages\Admin\Http\Controllers;
 
-use Exception;
 use Hash;
+use Exception;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Event;
-use BagistoPackages\Shop\Http\Requests\UserForm;
-use BagistoPackages\Shop\Repositories\RoleRepository;
-use BagistoPackages\Shop\Repositories\AdminRepository;
+use BagistoPackages\Admin\Http\Requests\UserForm;
+use BagistoPackages\Admin\Repositories\RoleRepository;
+use BagistoPackages\Admin\Repositories\AdminRepository;
 
 class UserController extends Controller
 {

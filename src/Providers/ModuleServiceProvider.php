@@ -3,12 +3,21 @@
 namespace BagistoPackages\Admin\Providers;
 
 use BagistoPackages\Shop\Tree;
+use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Facades\Event;
-use BagistoPackages\Shop\Models\Admin;
+use \BagistoPackages\Admin\Models as Models;
 use Konekt\Concord\BaseModuleServiceProvider;
+use BagistoPackages\Ui\ViewRenderEventManager;
+use \BagistoPackages\Admin\Facades as Facades;
+use \BagistoPackages\Admin\Http\Middleware as Middleware;
 
 class ModuleServiceProvider extends BaseModuleServiceProvider
 {
+    protected $models = [
+        Models\Admin::class,
+        Models\Role::class,
+    ];
+
     public function boot()
     {
         parent::boot();
@@ -16,7 +25,7 @@ class ModuleServiceProvider extends BaseModuleServiceProvider
         config()->set('auth.providers', array_merge(config('auth.providers'), [
             'admins' => [
                 'driver' => 'eloquent',
-                'model' => Admin::class
+                'model' => Models\Admin::class
             ]
         ]));
 
@@ -35,9 +44,17 @@ class ModuleServiceProvider extends BaseModuleServiceProvider
             ]
         ]));
 
+        $router = $this->app['router'];
+
+        $router->aliasMiddleware('admin', Middleware\Bouncer::class);
+
         $this->composeView();
 
         $this->registerACL();
+
+        Event::listen('bagisto.admin.layout.head', static function (ViewRenderEventManager $viewRenderEventManager) {
+            $viewRenderEventManager->addTemplate('admin::blade.tracer.style');
+        });
 
         Event::listen('user.admin.update-password', 'BagistoPackages\Admin\Listeners\PasswordChange@sendUpdatePasswordMail');
         Event::listen('checkout.order.save.after', 'BagistoPackages\Admin\Listeners\Order@sendNewOrderMail');
@@ -63,6 +80,7 @@ class ModuleServiceProvider extends BaseModuleServiceProvider
         parent::register();
 
         $this->registerConfig();
+        $this->registerBouncer();
     }
 
     protected function registerConfig()
@@ -70,6 +88,16 @@ class ModuleServiceProvider extends BaseModuleServiceProvider
         $this->mergeConfigFrom(dirname(__DIR__) . '/Resources/config/menu.php', 'menu.admin');
         $this->mergeConfigFrom(dirname(__DIR__) . '/Resources/config/acl.php', 'acl');
         $this->mergeConfigFrom(dirname(__DIR__) . '/Resources/config/system.php', 'core');
+    }
+
+    protected function registerBouncer()
+    {
+        $loader = AliasLoader::getInstance();
+        $loader->alias('Bouncer', Facades\Bouncer::class);
+
+        $this->app->singleton('bouncer', function () {
+            return new \BagistoPackages\Admin\Bouncer();
+        });
     }
 
     protected function composeView()
