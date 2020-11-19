@@ -2,7 +2,7 @@
 
 namespace BagistoPackages\Admin\Http\Controllers\Sales;
 
-use PhpOffice\PhpSpreadsheet\Writer\Pdf\Dompdf as PDF;
+use Barryvdh\DomPDF\Facade as PDF;
 use BagistoPackages\Admin\Http\Controllers\Controller;
 use BagistoPackages\Shop\Repositories\OrderRepository;
 use BagistoPackages\Shop\Repositories\InvoiceRepository;
