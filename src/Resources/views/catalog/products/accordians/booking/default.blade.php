@@ -28,11 +28,11 @@
     <script type="text/x-template" id="default-booking-template">
         <div>
             <div class="control-group" :class="[errors.has('booking[booking_type]') ? 'has-error' : '']">
-                <label class="required">{{ __('shop::app.admin.catalog.products.type') }}</label>
+                <label class="required">{{ __('admin::app.admin.catalog.products.type') }}</label>
 
-                <select v-validate="'required'" name="booking[booking_type]" v-model="default_booking.booking_type" class="control" data-vv-as="&quot;{{ __('shop::app.admin.catalog.products.type') }}&quot;">
-                    <option value="many">{{ __('shop::app.admin.catalog.products.many-bookings-for-one-day') }}</option>
-                    <option value="one">{{ __('shop::app.admin.catalog.products.one-booking-for-many-days') }}</option>
+                <select v-validate="'required'" name="booking[booking_type]" v-model="default_booking.booking_type" class="control" data-vv-as="&quot;{{ __('admin::app.admin.catalog.products.type') }}&quot;">
+                    <option value="many">{{ __('admin::app.admin.catalog.products.many-bookings-for-one-day') }}</option>
+                    <option value="one">{{ __('admin::app.admin.catalog.products.one-booking-for-many-days') }}</option>
                 </select>
 
                 <span class="control-error" v-if="errors.has('booking[booking_type]')">@{{ errors.first('booking[booking_type]') }}</span>
@@ -40,17 +40,17 @@
 
             <div v-if="default_booking.booking_type == 'many'">
                 <div class="control-group" :class="[errors.has('booking[duration]') ? 'has-error' : '']">
-                    <label class="required">{{ __('shop::app.admin.catalog.products.slot-duration') }}</label>
+                    <label class="required">{{ __('admin::app.admin.catalog.products.slot-duration') }}</label>
 
-                    <input type="text" v-validate="'required|min_value:1'" name="booking[duration]" v-model="default_booking.duration" class="control" data-vv-as="&quot;{{ __('shop::app.admin.catalog.products.slot-duration') }}&quot;"/>
+                    <input type="text" v-validate="'required|min_value:1'" name="booking[duration]" v-model="default_booking.duration" class="control" data-vv-as="&quot;{{ __('admin::app.admin.catalog.products.slot-duration') }}&quot;"/>
 
                     <span class="control-error" v-if="errors.has('booking[duration]')">@{{ errors.first('booking[duration]') }}</span>
                 </div>
 
                 <div class="control-group" :class="[errors.has('booking[break_time]') ? 'has-error' : '']">
-                    <label class="required">{{ __('shop::app.admin.catalog.products.break-time') }}</label>
+                    <label class="required">{{ __('admin::app.admin.catalog.products.break-time') }}</label>
 
-                    <input type="text" v-validate="'required|min_value:1'" name="booking[break_time]" v-model="default_booking.break_time" class="control" data-vv-as="&quot;{{ __('shop::app.admin.catalog.products.break-time') }}&quot;"/>
+                    <input type="text" v-validate="'required|min_value:1'" name="booking[break_time]" v-model="default_booking.break_time" class="control" data-vv-as="&quot;{{ __('admin::app.admin.catalog.products.break-time') }}&quot;"/>
 
                     <span class="control-error" v-if="errors.has('booking[break_time]')">@{{ errors.first('booking[break_time]') }}</span>
                 </div>
@@ -58,7 +58,7 @@
 
             <div class="section">
                 <div class="secton-title">
-                    <span>{{ __('shop::app.admin.catalog.products.slots') }}</span>
+                    <span>{{ __('admin::app.admin.catalog.products.slots') }}</span>
                 </div>
 
                 <div class="section-content">
@@ -67,10 +67,10 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>{{ __('shop::app.admin.catalog.products.day') }}</th>
-                                    <th>{{ __('shop::app.admin.catalog.products.from') }}</th>
-                                    <th>{{ __('shop::app.admin.catalog.products.to') }}</th>
-                                    <th>{{ __('shop::app.admin.catalog.products.status') }}</th>
+                                    <th>{{ __('admin::app.admin.catalog.products.day') }}</th>
+                                    <th>{{ __('admin::app.admin.catalog.products.from') }}</th>
+                                    <th>{{ __('admin::app.admin.catalog.products.to') }}</th>
+                                    <th>{{ __('admin::app.admin.catalog.products.status') }}</th>
                                 </tr>
                             </thead>
 
@@ -82,7 +82,7 @@
                                     <td>
                                         <div class="control-group" :class="[errors.has('booking[slots][' + index + '][from]') ? 'has-error' : '']">
                                             <time-component>
-                                                <input type="text" v-validate="parseInt(slots.many[index].status) ? 'required': ''" :name="'booking[slots][' + index + '][from]'" class="control" v-model="slots.many[index].from" data-vv-as="&quot;{{ __('shop::app.admin.catalog.products.from') }}&quot;">
+                                                <input type="text" v-validate="parseInt(slots.many[index].status) ? 'required': ''" :name="'booking[slots][' + index + '][from]'" class="control" v-model="slots.many[index].from" data-vv-as="&quot;{{ __('admin::app.admin.catalog.products.from') }}&quot;">
                                             </time-component>
 
                                             <span class="control-error" v-if="errors.has('booking[slots][' + index + '][from]')">
@@ -94,7 +94,7 @@
                                     <td>
                                         <div class="control-group" :class="[errors.has('booking[slots][' + index + '][to]') ? 'has-error' : '']">
                                             <time-component>
-                                                <input type="text" v-validate="parseInt(slots.many[index].status) ? 'required': ''" :name="'booking[slots][' + index + '][to]'" class="control" v-model="slots.many[index].to" data-vv-as="&quot;{{ __('shop::app.admin.catalog.products.to') }}&quot;">
+                                                <input type="text" v-validate="parseInt(slots.many[index].status) ? 'required': ''" :name="'booking[slots][' + index + '][to]'" class="control" v-model="slots.many[index].to" data-vv-as="&quot;{{ __('admin::app.admin.catalog.products.to') }}&quot;">
                                             </time-component>
 
                                             <span class="control-error" v-if="errors.has('booking[slots][' + index + '][to]')">
@@ -105,9 +105,9 @@
 
                                     <td>
                                         <div class="control-group" :class="[errors.has('booking[slots][' + index + '][status]') ? 'has-error' : '']">
-                                            <select v-validate="'required'" :name="'booking[slots][' + index + '][status]'" class="control" v-model="slots.many[index].status" data-vv-as="&quot;{{ __('shop::app.admin.catalog.products.status') }}&quot;">
-                                                <option value="1">{{ __('shop::app.admin.catalog.products.open') }}</option>
-                                                <option value="0">{{ __('shop::app.admin.catalog.products.close') }}</option>
+                                            <select v-validate="'required'" :name="'booking[slots][' + index + '][status]'" class="control" v-model="slots.many[index].status" data-vv-as="&quot;{{ __('admin::app.admin.catalog.products.status') }}&quot;">
+                                                <option value="1">{{ __('admin::app.admin.catalog.products.open') }}</option>
+                                                <option value="0">{{ __('admin::app.admin.catalog.products.close') }}</option>
                                             </select>
 
                                             <span class="control-error" v-if="errors.has('booking[slots][' + index + '][status]')">@{{ errors.first('booking[slots][' + index + '][status]') }}</span>
@@ -124,8 +124,8 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>{{ __('shop::app.admin.catalog.products.from') }}</th>
-                                    <th>{{ __('shop::app.admin.catalog.products.to') }}</th>
+                                    <th>{{ __('admin::app.admin.catalog.products.from') }}</th>
+                                    <th>{{ __('admin::app.admin.catalog.products.to') }}</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -144,7 +144,7 @@
                         </table>
 
                         <button type="button" class="btn btn-lg btn-primary" style="margin-top: 20px" @click="addSlot()">
-                            {{ __('shop::app.admin.catalog.products.add-slot') }}
+                            {{ __('admin::app.admin.catalog.products.add-slot') }}
                         </button>
 
                     </div>
@@ -158,7 +158,7 @@
         <tr>
             <td class="has-control-group">
                 <div class="control-group" :class="[errors.has(controlName + '[from_day]') ? 'has-error' : '']">
-                    <select v-validate="'required'" :name="controlName + '[from_day]'" v-model="slotItem.from_day" class="control" data-vv-as="&quot;{{ __('shop::app.admin.catalog.products.day') }}&quot;">
+                    <select v-validate="'required'" :name="controlName + '[from_day]'" v-model="slotItem.from_day" class="control" data-vv-as="&quot;{{ __('admin::app.admin.catalog.products.day') }}&quot;">
                         <option v-for="(day, index) in $parent.days" :value="index">@{{ day }}</option>
                     </select>
 
@@ -167,7 +167,7 @@
 
                 <div class="control-group date" :class="[errors.has(controlName + '[from]') ? 'has-error' : '']">
                     <time-component>
-                        <input type="text" v-validate="'required'" :name="controlName + '[from]'" v-model="slotItem.from" class="control" data-vv-as="&quot;{{ __('shop::app.admin.catalog.products.from') }}&quot;">
+                        <input type="text" v-validate="'required'" :name="controlName + '[from]'" v-model="slotItem.from" class="control" data-vv-as="&quot;{{ __('admin::app.admin.catalog.products.from') }}&quot;">
                     </time-component>
 
                     <span class="control-error" v-if="errors.has(controlName + '[from]')">
@@ -178,7 +178,7 @@
 
             <td class="has-control-group">
                 <div class="control-group" :class="[errors.has(controlName + '[to_day]') ? 'has-error' : '']">
-                    <select v-validate="'required'" :name="controlName + '[to_day]'" v-model="slotItem.to_day" class="control" data-vv-as="&quot;{{ __('shop::app.admin.catalog.products.day') }}&quot;">
+                    <select v-validate="'required'" :name="controlName + '[to_day]'" v-model="slotItem.to_day" class="control" data-vv-as="&quot;{{ __('admin::app.admin.catalog.products.day') }}&quot;">
                         <option v-for="(day, index) in $parent.days" :value="index">@{{ day }}</option>
                     </select>
 
@@ -187,7 +187,7 @@
 
                 <div class="control-group date" :class="[errors.has(controlName + '[to]') ? 'has-error' : '']">
                     <time-component>
-                        <input type="text" v-validate="'required'" :name="controlName + '[to]'" v-model="slotItem.to" class="control" data-vv-as="&quot;{{ __('shop::app.admin.catalog.products.to') }}&quot;">
+                        <input type="text" v-validate="'required'" :name="controlName + '[to]'" v-model="slotItem.to" class="control" data-vv-as="&quot;{{ __('admin::app.admin.catalog.products.to') }}&quot;">
                     </time-component>
 
                     <span class="control-error" v-if="errors.has(controlName + '[to]')">
@@ -236,13 +236,13 @@
                     },
 
                     days: [
-                        "{{ __('shop::app.admin.catalog.products.sunday') }}",
-                        "{{ __('shop::app.admin.catalog.products.monday') }}",
-                        "{{ __('shop::app.admin.catalog.products.tuesday') }}",
-                        "{{ __('shop::app.admin.catalog.products.wednesday') }}",
-                        "{{ __('shop::app.admin.catalog.products.thursday') }}",
-                        "{{ __('shop::app.admin.catalog.products.friday') }}",
-                        "{{ __('shop::app.admin.catalog.products.saturday') }}"
+                        "{{ __('admin::app.admin.catalog.products.sunday') }}",
+                        "{{ __('admin::app.admin.catalog.products.monday') }}",
+                        "{{ __('admin::app.admin.catalog.products.tuesday') }}",
+                        "{{ __('admin::app.admin.catalog.products.wednesday') }}",
+                        "{{ __('admin::app.admin.catalog.products.thursday') }}",
+                        "{{ __('admin::app.admin.catalog.products.friday') }}",
+                        "{{ __('admin::app.admin.catalog.products.saturday') }}"
                     ]
                 }
             },

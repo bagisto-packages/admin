@@ -14,7 +14,7 @@
                            class="required"> {{ __('admin::app.customers.customers.first_name') }}</label>
                     <input type="text" class="control" name="first_name" v-validate="'required'"
                            value="{{old('first_name') ?:$customer->first_name}}"
-                           data-vv-as="&quot;{{ __('shop::app.customer.signup-form.firstname') }}&quot;"/>
+                           data-vv-as="&quot;{{ __('admin::app.customer.signup-form.firstname') }}&quot;"/>
                     <span class="control-error" v-if="errors.has('first_name')">@{{ errors.first('first_name') }}</span>
                 </div>
 
@@ -25,7 +25,7 @@
                            class="required"> {{ __('admin::app.customers.customers.last_name') }}</label>
                     <input type="text" class="control" name="last_name" v-validate="'required'"
                            value="{{old('last_name') ?:$customer->last_name}}"
-                           data-vv-as="&quot;{{ __('shop::app.customer.signup-form.lastname') }}&quot;">
+                           data-vv-as="&quot;{{ __('admin::app.customer.signup-form.lastname') }}&quot;">
                     <span class="control-error" v-if="errors.has('last_name')">@{{ errors.first('last_name') }}</span>
                 </div>
 
@@ -35,7 +35,7 @@
                     <label for="email" class="required"> {{ __('admin::app.customers.customers.email') }}</label>
                     <input type="email" class="control" name="email" v-validate="'required|email'"
                            value="{{old('email') ?:$customer->email}}"
-                           data-vv-as="&quot;{{ __('shop::app.customer.signup-form.email') }}&quot;">
+                           data-vv-as="&quot;{{ __('admin::app.customer.signup-form.email') }}&quot;">
                     <span class="control-error" v-if="errors.has('email')">@{{ errors.first('email') }}</span>
                 </div>
 

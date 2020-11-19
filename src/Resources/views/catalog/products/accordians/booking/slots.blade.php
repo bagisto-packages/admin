@@ -4,8 +4,8 @@
             <table>
                 <thead>
                     <tr>
-                        <th>{{ __('shop::app.admin.catalog.products.from') }}</th>
-                        <th>{{ __('shop::app.admin.catalog.products.to') }}</th>
+                        <th>{{ __('admin::app.admin.catalog.products.from') }}</th>
+                        <th>{{ __('admin::app.admin.catalog.products.to') }}</th>
                         <th class="actions"></th>
                     </tr>
                 </thead>
@@ -22,7 +22,7 @@
             </table>
 
             <button type="button" class="btn btn-lg btn-primary" style="margin-top: 20px" @click="addSlot()">
-                {{ __('shop::app.admin.catalog.products.add-slot') }}
+                {{ __('admin::app.admin.catalog.products.add-slot') }}
             </button>
         </div>
 
@@ -42,8 +42,8 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>{{ __('shop::app.admin.catalog.products.from') }}</th>
-                                <th>{{ __('shop::app.admin.catalog.products.to') }}</th>
+                                <th>{{ __('admin::app.admin.catalog.products.from') }}</th>
+                                <th>{{ __('admin::app.admin.catalog.products.to') }}</th>
                                 <th class="actions"></th>
                             </tr>
                         </thead>
@@ -60,7 +60,7 @@
                     </table>
 
                     <button type="button" class="btn btn-lg btn-primary" style="margin-top: 20px" @click="addSlot(dayIndex)">
-                        {{ __('shop::app.admin.catalog.products.add-slot') }}
+                        {{ __('admin::app.admin.catalog.products.add-slot') }}
                     </button>
                 </div>
             </accordian>
@@ -73,7 +73,7 @@
         <td>
             <div class="control-group date" :class="[errors.has(controlName + '[from]') ? 'has-error' : '']">
                 <time-component>
-                    <input type="text" v-validate="'required'" :name="controlName + '[from]'" v-model="slotItem.from" class="control" data-vv-as="&quot;{{ __('shop::app.admin.catalog.products.from') }}&quot;">
+                    <input type="text" v-validate="'required'" :name="controlName + '[from]'" v-model="slotItem.from" class="control" data-vv-as="&quot;{{ __('admin::app.admin.catalog.products.from') }}&quot;">
                 </time-component>
 
                 <span class="control-error" v-if="errors.has(controlName + '[from]')">
@@ -85,7 +85,7 @@
         <td>
             <div class="control-group date" :class="[errors.has(controlName + '[to]') ? 'has-error' : '']">
                 <time-component>
-                    <input type="text" v-validate="'required'" :name="controlName + '[to]'" v-model="slotItem.to" class="control" data-vv-as="&quot;{{ __('shop::app.admin.catalog.products.to') }}&quot;">
+                    <input type="text" v-validate="'required'" :name="controlName + '[to]'" v-model="slotItem.to" class="control" data-vv-as="&quot;{{ __('admin::app.admin.catalog.products.to') }}&quot;">
                 </time-component>
 
                 <span class="control-error" v-if="errors.has(controlName + '[to]')">
@@ -118,13 +118,13 @@
                 },
 
                 week_days: [
-                    "{{ __('shop::app.admin.catalog.products.sunday') }}",
-                    "{{ __('shop::app.admin.catalog.products.monday') }}",
-                    "{{ __('shop::app.admin.catalog.products.tuesday') }}",
-                    "{{ __('shop::app.admin.catalog.products.wednesday') }}",
-                    "{{ __('shop::app.admin.catalog.products.thursday') }}",
-                    "{{ __('shop::app.admin.catalog.products.friday') }}",
-                    "{{ __('shop::app.admin.catalog.products.saturday') }}"
+                    "{{ __('admin::app.admin.catalog.products.sunday') }}",
+                    "{{ __('admin::app.admin.catalog.products.monday') }}",
+                    "{{ __('admin::app.admin.catalog.products.tuesday') }}",
+                    "{{ __('admin::app.admin.catalog.products.wednesday') }}",
+                    "{{ __('admin::app.admin.catalog.products.thursday') }}",
+                    "{{ __('admin::app.admin.catalog.products.friday') }}",
+                    "{{ __('admin::app.admin.catalog.products.saturday') }}"
                 ]
             }
         },

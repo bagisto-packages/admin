@@ -10,12 +10,12 @@
     <script type="text/x-template" id="rental-booking-template">
         <div>
             <div class="control-group" :class="[errors.has('booking[renting_type]') ? 'has-error' : '']">
-                <label class="required">{{ __('shop::app.admin.catalog.products.renting-type') }}</label>
+                <label class="required">{{ __('admin::app.admin.catalog.products.renting-type') }}</label>
 
-                <select v-validate="'required'" name="booking[renting_type]" v-model="rental_booking.renting_type" class="control" data-vv-as="&quot;{{ __('shop::app.admin.catalog.products.renting-type') }}&quot;">
-                    <option value="daily">{{ __('shop::app.admin.catalog.products.daily') }}</option>
-                    <option value="hourly">{{ __('shop::app.admin.catalog.products.hourly') }}</option>
-                    <option value="daily_hourly">{{ __('shop::app.admin.catalog.products.daily-hourly') }}</option>
+                <select v-validate="'required'" name="booking[renting_type]" v-model="rental_booking.renting_type" class="control" data-vv-as="&quot;{{ __('admin::app.admin.catalog.products.renting-type') }}&quot;">
+                    <option value="daily">{{ __('admin::app.admin.catalog.products.daily') }}</option>
+                    <option value="hourly">{{ __('admin::app.admin.catalog.products.hourly') }}</option>
+                    <option value="daily_hourly">{{ __('admin::app.admin.catalog.products.daily-hourly') }}</option>
                 </select>
 
                 <span class="control-error" v-if="errors.has('booking[renting_type]')">@{{ errors.first('booking[renting_type]') }}</span>
@@ -23,9 +23,9 @@
 
             <div v-if="rental_booking.renting_type == 'daily' || rental_booking.renting_type == 'daily_hourly'">
                 <div class="control-group" :class="[errors.has('booking[daily_price]') ? 'has-error' : '']">
-                    <label class="required">{{ __('shop::app.admin.catalog.products.daily-price') }}</label>
+                    <label class="required">{{ __('admin::app.admin.catalog.products.daily-price') }}</label>
 
-                    <input type="text" v-validate="'required'" name="booking[daily_price]" v-model="rental_booking.daily_price" class="control" data-vv-as="&quot;{{ __('shop::app.admin.catalog.products.daily-price') }}&quot;"/>
+                    <input type="text" v-validate="'required'" name="booking[daily_price]" v-model="rental_booking.daily_price" class="control" data-vv-as="&quot;{{ __('admin::app.admin.catalog.products.daily-price') }}&quot;"/>
 
                     <span class="control-error" v-if="errors.has('booking[daily_price]')">@{{ errors.first('booking[daily_price]') }}</span>
                 </div>
@@ -33,9 +33,9 @@
 
             <div v-if="rental_booking.renting_type == 'hourly' || rental_booking.renting_type == 'daily_hourly'">
                 <div class="control-group" :class="[errors.has('booking[hourly_price]') ? 'has-error' : '']">
-                    <label class="required">{{ __('shop::app.admin.catalog.products.hourly-price') }}</label>
+                    <label class="required">{{ __('admin::app.admin.catalog.products.hourly-price') }}</label>
 
-                    <input type="text" v-validate="'required'" name="booking[hourly_price]" v-model="rental_booking.hourly_price" class="control" data-vv-as="&quot;{{ __('shop::app.admin.catalog.products.hourly-price') }}&quot;"/>
+                    <input type="text" v-validate="'required'" name="booking[hourly_price]" v-model="rental_booking.hourly_price" class="control" data-vv-as="&quot;{{ __('admin::app.admin.catalog.products.hourly-price') }}&quot;"/>
 
                     <span class="control-error" v-if="errors.has('booking[hourly_price]')">@{{ errors.first('booking[hourly_price]') }}</span>
                 </div>
@@ -43,11 +43,11 @@
 
             <div v-if="rental_booking.renting_type == 'hourly' || rental_booking.renting_type == 'daily_hourly'">
                 <div class="control-group" :class="[errors.has('booking[same_slot_all_days]') ? 'has-error' : '']">
-                    <label class="required">{{ __('shop::app.admin.catalog.products.same-slot-all-days') }}</label>
+                    <label class="required">{{ __('admin::app.admin.catalog.products.same-slot-all-days') }}</label>
 
-                    <select v-validate="'required'" name="booking[same_slot_all_days]" v-model="rental_booking.same_slot_all_days" class="control" data-vv-as="&quot;{{ __('shop::app.admin.catalog.products.same-slot-all-days') }}&quot;">
-                        <option value="1">{{ __('shop::app.admin.catalog.products.yes') }}</option>
-                        <option value="0">{{ __('shop::app.admin.catalog.products.no') }}</option>
+                    <select v-validate="'required'" name="booking[same_slot_all_days]" v-model="rental_booking.same_slot_all_days" class="control" data-vv-as="&quot;{{ __('admin::app.admin.catalog.products.same-slot-all-days') }}&quot;">
+                        <option value="1">{{ __('admin::app.admin.catalog.products.yes') }}</option>
+                        <option value="0">{{ __('admin::app.admin.catalog.products.no') }}</option>
                     </select>
 
                     <span class="control-error" v-if="errors.has('booking[same_slot_all_days]')">@{{ errors.first('booking[same_slot_all_days]') }}</span>
@@ -55,7 +55,7 @@
 
                 <div class="section">
                     <div class="secton-title">
-                        <span>{{ __('shop::app.admin.catalog.products.slots') }}</span>
+                        <span>{{ __('admin::app.admin.catalog.products.slots') }}</span>
                     </div>
 
                     <div class="section-content">

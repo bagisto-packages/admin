@@ -17,7 +17,7 @@
 
 {!! view_render_event('bagisto.admin.catalog.product.edit_form_accordian.booking.before', ['product' => $product]) !!}
 
-<accordian :title="'{{ __('shop::app.admin.catalog.products.booking') }}'" :active="true">
+<accordian :title="'{{ __('admin::app.admin.catalog.products.booking') }}'" :active="true">
     <div slot="body">
 
         <booking-information></booking-information>
@@ -36,40 +36,40 @@
         <div>
 
             <div class="control-group" :class="[errors.has('booking[type]') ? 'has-error' : '']">
-                <label class="required">{{ __('shop::app.admin.catalog.products.booking-type') }}</label>
+                <label class="required">{{ __('admin::app.admin.catalog.products.booking-type') }}</label>
 
                 <input type="hidden" name="booking[type]" :value="booking.type"/>
 
-                <select v-validate="'required'" name="booking[type]" v-model="booking.type" class="control" data-vv-as="&quot;{{ __('shop::app.admin.catalog.products.booking-type') }}&quot;" :disabled="! is_new">
-                    <option value="default">{{ __('shop::app.admin.catalog.products.default') }}</option>
-                    <option value="appointment">{{ __('shop::app.admin.catalog.products.appointment-booking') }}</option>
-                    <option value="event">{{ __('shop::app.admin.catalog.products.event-booking') }}</option>
-                    <option value="rental">{{ __('shop::app.admin.catalog.products.rental-booking') }}</option>
-                    <option value="table">{{ __('shop::app.admin.catalog.products.table-booking') }}</option>
+                <select v-validate="'required'" name="booking[type]" v-model="booking.type" class="control" data-vv-as="&quot;{{ __('admin::app.admin.catalog.products.booking-type') }}&quot;" :disabled="! is_new">
+                    <option value="default">{{ __('admin::app.admin.catalog.products.default') }}</option>
+                    <option value="appointment">{{ __('admin::app.admin.catalog.products.appointment-booking') }}</option>
+                    <option value="event">{{ __('admin::app.admin.catalog.products.event-booking') }}</option>
+                    <option value="rental">{{ __('admin::app.admin.catalog.products.rental-booking') }}</option>
+                    <option value="table">{{ __('admin::app.admin.catalog.products.table-booking') }}</option>
                 </select>
 
                 <span class="control-error" v-if="errors.has('booking[type]')">@{{ errors.first('booking[type]') }}</span>
             </div>
 
             <div class="control-group">
-                <label>{{ __('shop::app.admin.catalog.products.location') }}</label>
+                <label>{{ __('admin::app.admin.catalog.products.location') }}</label>
                 <input type="text" name="booking[location]" v-model="booking.location" class="control"/>
             </div>
 
             <div class="control-group" :class="[errors.has('booking[qty]') ? 'has-error' : '']" v-if="booking.type == 'default' || booking.type == 'appointment' || booking.type == 'rental'">
-                <label class="required">{{ __('shop::app.admin.catalog.products.qty') }}</label>
+                <label class="required">{{ __('admin::app.admin.catalog.products.qty') }}</label>
 
-                <input type="text" v-validate="'required|numeric|min:0'" name="booking[qty]" v-model="booking.qty" class="control" data-vv-as="&quot;{{ __('shop::app.admin.catalog.products.qty') }}&quot;"/>
+                <input type="text" v-validate="'required|numeric|min:0'" name="booking[qty]" v-model="booking.qty" class="control" data-vv-as="&quot;{{ __('admin::app.admin.catalog.products.qty') }}&quot;"/>
 
                 <span class="control-error" v-if="errors.has('booking[qty]')">@{{ errors.first('booking[qty]') }}</span>
             </div>
 
             <div class="control-group" v-if="booking.type != 'event' && booking.type != 'default'" :class="[errors.has('booking[available_every_week]') ? 'has-error' : '']">
-                <label class="required">{{ __('shop::app.admin.catalog.products.available-every-week') }}</label>
+                <label class="required">{{ __('admin::app.admin.catalog.products.available-every-week') }}</label>
 
-                <select v-validate="'required'" name="booking[available_every_week]" v-model="booking.available_every_week" class="control" data-vv-as="&quot;{{ __('shop::app.admin.catalog.products.available-every-week') }}&quot;">
-                    <option value="1">{{ __('shop::app.admin.catalog.products.yes') }}</option>
-                    <option value="0">{{ __('shop::app.admin.catalog.products.no') }}</option>
+                <select v-validate="'required'" name="booking[available_every_week]" v-model="booking.available_every_week" class="control" data-vv-as="&quot;{{ __('admin::app.admin.catalog.products.available-every-week') }}&quot;">
+                    <option value="1">{{ __('admin::app.admin.catalog.products.yes') }}</option>
+                    <option value="0">{{ __('admin::app.admin.catalog.products.no') }}</option>
                 </select>
 
                 <span class="control-error" v-if="errors.has('booking[available_every_week]')">@{{ errors.first('booking[available_every_week]') }}</span>
@@ -77,20 +77,20 @@
 
             <div v-if="! parseInt(booking.available_every_week)">
                 <div class="control-group date" :class="[errors.has('booking[available_from]') ? 'has-error' : '']">
-                    <label class="required">{{ __('shop::app.admin.catalog.products.available-from') }}</label>
+                    <label class="required">{{ __('admin::app.admin.catalog.products.available-from') }}</label>
 
                     <datetime>
-                        <input type="text" v-validate="'required|date_format:yyyy-MM-dd HH:mm:ss|after:{{\Carbon\Carbon::yesterday()->format('Y-m-d 23:59:59')}}'" name="booking[available_from]" v-model="booking.available_from" class="control" data-vv-as="&quot;{{ __('shop::app.admin.catalog.products.available-from') }}&quot;" ref="available_from"/>
+                        <input type="text" v-validate="'required|date_format:yyyy-MM-dd HH:mm:ss|after:{{\Carbon\Carbon::yesterday()->format('Y-m-d 23:59:59')}}'" name="booking[available_from]" v-model="booking.available_from" class="control" data-vv-as="&quot;{{ __('admin::app.admin.catalog.products.available-from') }}&quot;" ref="available_from"/>
                     </datetime>
 
                     <span class="control-error" v-if="errors.has('booking[available_from]')">@{{ errors.first('booking[available_from]') }}</span>
                 </div>
 
                 <div class="control-group date" :class="[errors.has('booking[available_to]') ? 'has-error' : '']">
-                    <label class="required">{{ __('shop::app.admin.catalog.products.available-to') }}</label>
+                    <label class="required">{{ __('admin::app.admin.catalog.products.available-to') }}</label>
 
                     <datetime>
-                        <input type="text" v-validate="'required|date_format:yyyy-MM-dd HH:mm:ss|after:available_from'" name="booking[available_to]" v-model="booking.available_to" class="control" data-vv-as="&quot;{{ __('shop::app.admin.catalog.products.available-to') }}&quot;" ref="available_to"/>
+                        <input type="text" v-validate="'required|date_format:yyyy-MM-dd HH:mm:ss|after:available_from'" name="booking[available_to]" v-model="booking.available_to" class="control" data-vv-as="&quot;{{ __('admin::app.admin.catalog.products.available-to') }}&quot;" ref="available_to"/>
                     </datetime>
 
                     <span class="control-error" v-if="errors.has('booking[available_to]')">@{{ errors.first('booking[available_to]') }}</span>

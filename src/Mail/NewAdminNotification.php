@@ -38,7 +38,7 @@ class NewAdminNotification extends Mailable
     {
         return $this->from(core()->getSenderEmailDetails()['email'], core()->getSenderEmailDetails()['name'])
             ->to(core()->getAdminEmailDetails()['email'])
-            ->subject(trans('shop::app.mail.order.subject'))
-            ->view('shop::emails.sales.new-admin-order');
+            ->subject(trans('admin::app.mail.order.subject'))
+            ->view('admin::emails.sales.new-admin-order');
     }
 }

@@ -46,7 +46,7 @@ class NewCustomerNotification extends Mailable
     {
         return $this->from(core()->getSenderEmailDetails()['email'], core()->getSenderEmailDetails()['name'])
             ->to($this->customer->email)
-            ->subject(trans('shop::app.mail.customer.new.subject'))
-            ->view('shop::emails.customer.new-customer')->with(['customer' => $this->customer, 'password' => $this->password]);
+            ->subject(trans('admin::app.mail.customer.new.subject'))
+            ->view('admin::emails.customer.new-customer')->with(['customer' => $this->customer, 'password' => $this->password]);
     }
 }

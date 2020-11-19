@@ -28,7 +28,7 @@ class CancelOrderAdminNotification extends Mailable
     {
         return $this->from(core()->getSenderEmailDetails()['email'], core()->getSenderEmailDetails()['name'])
             ->to(core()->getAdminEmailDetails()['email'])
-            ->subject(trans('shop::app.mail.order.cancel.subject'))
-            ->view('shop::emails.sales.order-cancel-admin');
+            ->subject(trans('admin::app.mail.order.cancel.subject'))
+            ->view('admin::emails.sales.order-cancel-admin');
     }
 }

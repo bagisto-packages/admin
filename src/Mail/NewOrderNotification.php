@@ -37,7 +37,7 @@ class NewOrderNotification extends Mailable
     {
         return $this->from(core()->getSenderEmailDetails()['email'], core()->getSenderEmailDetails()['name'])
             ->to($this->order->customer_email, $this->order->customer_full_name)
-            ->subject(trans('shop::app.mail.order.subject'))
-            ->view('shop::emails.sales.new-order');
+            ->subject(trans('admin::app.mail.order.subject'))
+            ->view('admin::emails.sales.new-order');
     }
 }

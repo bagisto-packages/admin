@@ -4,4 +4,4 @@
 {{ $address->postcode }} {{ $address->city }}<br>
 {{ $address->state }}<br>
 {{ core()->country_name($address->country) }}<br></br>
-{{ __('shop::app.checkout.onepage.contact') }} : {{ $address->phone }}
+{{ __('admin::app.checkout.onepage.contact') }} : {{ $address->phone }}

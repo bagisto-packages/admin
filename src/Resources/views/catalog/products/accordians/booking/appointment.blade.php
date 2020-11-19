@@ -10,27 +10,27 @@
     <script type="text/x-template" id="appointment-booking-template">
         <div>
             <div class="control-group" :class="[errors.has('booking[duration]') ? 'has-error' : '']">
-                <label class="required">{{ __('shop::app.admin.catalog.products.slot-duration') }}</label>
+                <label class="required">{{ __('admin::app.admin.catalog.products.slot-duration') }}</label>
 
-                <input type="text" v-validate="'required|min_value:1'" name="booking[duration]" v-model="appointment_booking.duration" class="control" data-vv-as="&quot;{{ __('shop::app.admin.catalog.products.slot-duration') }}&quot;"/>
+                <input type="text" v-validate="'required|min_value:1'" name="booking[duration]" v-model="appointment_booking.duration" class="control" data-vv-as="&quot;{{ __('admin::app.admin.catalog.products.slot-duration') }}&quot;"/>
 
                 <span class="control-error" v-if="errors.has('booking[duration]')">@{{ errors.first('booking[duration]') }}</span>
             </div>
 
             <div class="control-group" :class="[errors.has('booking[break_time]') ? 'has-error' : '']">
-                <label class="required">{{ __('shop::app.admin.catalog.products.break-time') }}</label>
+                <label class="required">{{ __('admin::app.admin.catalog.products.break-time') }}</label>
 
-                <input type="text" v-validate="'required|min_value:1'" name="booking[break_time]" v-model="appointment_booking.break_time" class="control" data-vv-as="&quot;{{ __('shop::app.admin.catalog.products.break-time') }}&quot;"/>
+                <input type="text" v-validate="'required|min_value:1'" name="booking[break_time]" v-model="appointment_booking.break_time" class="control" data-vv-as="&quot;{{ __('admin::app.admin.catalog.products.break-time') }}&quot;"/>
 
                 <span class="control-error" v-if="errors.has('booking[break_time]')">@{{ errors.first('booking[break_time]') }}</span>
             </div>
 
             <div class="control-group" :class="[errors.has('booking[same_slot_all_days]') ? 'has-error' : '']">
-                <label class="required">{{ __('shop::app.admin.catalog.products.same-slot-all-days') }}</label>
+                <label class="required">{{ __('admin::app.admin.catalog.products.same-slot-all-days') }}</label>
 
-                <select v-validate="'required'" name="booking[same_slot_all_days]" v-model="appointment_booking.same_slot_all_days" class="control" data-vv-as="&quot;{{ __('shop::app.admin.catalog.products.same-slot-all-days') }}&quot;">
-                    <option value="1">{{ __('shop::app.admin.catalog.products.yes') }}</option>
-                    <option value="0">{{ __('shop::app.admin.catalog.products.no') }}</option>
+                <select v-validate="'required'" name="booking[same_slot_all_days]" v-model="appointment_booking.same_slot_all_days" class="control" data-vv-as="&quot;{{ __('admin::app.admin.catalog.products.same-slot-all-days') }}&quot;">
+                    <option value="1">{{ __('admin::app.admin.catalog.products.yes') }}</option>
+                    <option value="0">{{ __('admin::app.admin.catalog.products.no') }}</option>
                 </select>
 
                 <span class="control-error" v-if="errors.has('booking[same_slot_all_days]')">@{{ errors.first('booking[same_slot_all_days]') }}</span>
@@ -38,7 +38,7 @@
 
             <div class="section">
                 <div class="secton-title">
-                    <span>{{ __('shop::app.admin.catalog.products.slots') }}</span>
+                    <span>{{ __('admin::app.admin.catalog.products.slots') }}</span>
                 </div>
 
                 <div class="section-content">

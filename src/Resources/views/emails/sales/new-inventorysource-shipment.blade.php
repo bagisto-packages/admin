@@ -1,14 +1,7 @@
-@component('shop::emails.layouts.master')
+@component('admin::emails.layouts.master')
     <div style="text-align: center;">
         <a href="{{ config('app.url') }}">
-            @if (core()->getConfigData('general.design.admin_logo.logo_image'))
-                <img
-                    src="{{ \Illuminate\Support\Facades\Storage::url(core()->getConfigData('general.design.admin_logo.logo_image')) }}"
-                    alt="{{ config('app.name') }}" style="height: 40px; width: 110px;"/>
-            @else
-                <img src="{{ asset('vendor/packages/ui/assets/images/logo.png') }}"
-                     alt="{{ config('app.name') }}"/>
-            @endif
+            @include ('admin::emails.layouts.logo')
         </a>
     </div>
 
@@ -18,15 +11,15 @@
     <div style="padding: 30px;">
         <div style="font-size: 20px;color: #242424;line-height: 30px;margin-bottom: 34px;">
             <span style="font-weight: bold;">
-                {{ __('shop::app.mail.shipment.inventory-heading', ['order_id' => $order->increment_id, 'shipment_id' => $shipment->id]) }}
+                {{ __('admin::app.mail.shipment.inventory-heading', ['order_id' => $order->increment_id, 'shipment_id' => $shipment->id]) }}
             </span> <br>
 
             <p style="font-size: 16px;color: #5E5E5E;line-height: 24px;">
-                {{ __('shop::app.mail.order.dear', ['customer_name' => $inventory->name]) }},
+                {{ __('admin::app.mail.order.dear', ['customer_name' => $inventory->name]) }},
             </p>
 
             <p style="font-size: 16px;color: #5E5E5E;line-height: 24px;">
-                {!! __('shop::app.mail.shipment.greeting', [
+                {!! __('admin::app.mail.shipment.greeting', [
                     'order_id' => '<a href="' . route('shop.customer.orders.view', $order->id) . '" style="color: #0041FF; font-weight: bold;">#' . $order->increment_id . '</a>',
                     'created_at' => $order->created_at
                     ])
@@ -39,7 +32,7 @@
             style="display: flex;flex-direction: row;margin-top: 20px;justify-content: space-between;margin-bottom: 40px;">
             <div style="line-height: 25px;">
                 <div style="font-weight: bold;font-size: 16px;color: #242424;">
-                    {{ __('shop::app.mail.order.shipping-address') }}
+                    {{ __('admin::app.mail.order.shipping-address') }}
                 </div>
 
                 <div>
@@ -61,11 +54,11 @@
                 <div>---</div>
 
                 <div style="margin-bottom: 40px;">
-                    {{ __('shop::app.mail.order.contact') }} : {{ $order->shipping_address->phone }}
+                    {{ __('admin::app.mail.order.contact') }} : {{ $order->shipping_address->phone }}
                 </div>
 
                 <div style="font-weight: bold;font-size: 16px;color: #242424;">
-                    {{ __('shop::app.mail.order.shipping') }}
+                    {{ __('admin::app.mail.order.shipping') }}
                 </div>
 
                 <div style="font-size: 16px;color: #242424;">
@@ -75,19 +68,19 @@
 
                     <div style="margin-top: 5px;">
                         <span
-                            style="font-weight: bold;">{{ __('shop::app.mail.shipment.carrier') }} : </span>{{ $shipment->carrier_title }}
+                            style="font-weight: bold;">{{ __('admin::app.mail.shipment.carrier') }} : </span>{{ $shipment->carrier_title }}
                     </div>
 
                     <div style="margin-top: 5px;">
                         <span
-                            style="font-weight: bold;">{{ __('shop::app.mail.shipment.tracking-number') }} : </span>{{ $shipment->track_number }}
+                            style="font-weight: bold;">{{ __('admin::app.mail.shipment.tracking-number') }} : </span>{{ $shipment->track_number }}
                     </div>
                 </div>
             </div>
 
             <div style="line-height: 25px;">
                 <div style="font-weight: bold;font-size: 16px;color: #242424;">
-                    {{ __('shop::app.mail.order.billing-address') }}
+                    {{ __('admin::app.mail.order.billing-address') }}
                 </div>
 
                 <div>
@@ -109,11 +102,11 @@
                 <div>---</div>
 
                 <div style="margin-bottom: 40px;">
-                    {{ __('shop::app.mail.order.contact') }} : {{ $order->billing_address->phone }}
+                    {{ __('admin::app.mail.order.contact') }} : {{ $order->billing_address->phone }}
                 </div>
 
                 <div style="font-weight: bold; font-size: 16px; color: #242424;">
-                    {{ __('shop::app.mail.order.payment') }}
+                    {{ __('admin::app.mail.order.payment') }}
                 </div>
 
                 <div style="font-weight: bold; font-size: 16px; color: #242424;">
@@ -128,20 +121,20 @@
                 border-spacing: 0;width: 100%">
                     <thead>
                     <tr style="background-color: #f2f2f2">
-                        <th style="text-align: left;padding: 8px">{{ __('shop::app.customer.account.order.view.SKU') }}</th>
-                        <th style="text-align: left;padding: 8px">{{ __('shop::app.customer.account.order.view.product-name') }}</th>
-                        <th style="text-align: left;padding: 8px">{{ __('shop::app.customer.account.order.view.price') }}</th>
-                        <th style="text-align: left;padding: 8px">{{ __('shop::app.customer.account.order.view.qty') }}</th>
+                        <th style="text-align: left;padding: 8px">{{ __('admin::app.customer.account.order.view.SKU') }}</th>
+                        <th style="text-align: left;padding: 8px">{{ __('admin::app.customer.account.order.view.product-name') }}</th>
+                        <th style="text-align: left;padding: 8px">{{ __('admin::app.customer.account.order.view.price') }}</th>
+                        <th style="text-align: left;padding: 8px">{{ __('admin::app.customer.account.order.view.qty') }}</th>
                     </tr>
                     </thead>
 
                     <tbody>
                     @foreach ($shipment->items as $item)
                         <tr>
-                            <td data-value="{{ __('shop::app.customer.account.order.view.SKU') }}"
+                            <td data-value="{{ __('admin::app.customer.account.order.view.SKU') }}"
                                 style="text-align: left;padding: 8px">{{ $item->sku }}</td>
 
-                            <td data-value="{{ __('shop::app.customer.account.order.view.product-name') }}"
+                            <td data-value="{{ __('admin::app.customer.account.order.view.product-name') }}"
                                 style="text-align: left;padding: 8px">
                                 {{ $item->name }}
 
@@ -157,10 +150,10 @@
                                 @endif
                             </td>
 
-                            <td data-value="{{ __('shop::app.customer.account.order.view.price') }}"
+                            <td data-value="{{ __('admin::app.customer.account.order.view.price') }}"
                                 style="text-align: left;padding: 8px">{{ core()->formatPrice($item->price, $order->order_currency_code) }}</td>
 
-                            <td data-value="{{ __('shop::app.customer.account.order.view.qty') }}"
+                            <td data-value="{{ __('admin::app.customer.account.order.view.qty') }}"
                                 style="text-align: left;padding: 8px">{{ $item->qty }}</td>
                         </tr>
                     @endforeach
@@ -172,7 +165,7 @@
         {{-- <div style="margin-top: 20px;font-size: 16px;color: #5E5E5E;line-height: 24px;display: inline-block;width: 100%">
             <p style="font-size: 16px;color: #5E5E5E;line-height: 24px;">
                 {!!
-                    __('shop::app.mail.order.help', [
+                    __('admin::app.mail.order.help', [
                         'support_email' => '<a style="color:#0041FF" href="mailto:' . config('mail.from.address') . '">' . config('mail.from.address'). '</a>'
                         ])
                 !!}

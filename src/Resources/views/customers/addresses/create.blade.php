@@ -39,45 +39,45 @@
 
                             <div class="control-group" :class="[errors.has('company_name') ? 'has-error' : '']">
                                 <label
-                                    for="company_name">{{ __('shop::app.customer.account.address.create.company_name') }}</label>
+                                    for="company_name">{{ __('admin::app.customer.account.address.create.company_name') }}</label>
                                 <input type="text" class="control" name="company_name" value="{{ old('company_name') }}"
-                                       data-vv-as="&quot;{{ __('shop::app.customer.account.address.create.company_name') }}&quot;">
+                                       data-vv-as="&quot;{{ __('admin::app.customer.account.address.create.company_name') }}&quot;">
                                 <span class="control-error" v-if="errors.has('company_name')">@{{ errors.first('company_name') }}</span>
                             </div>
 
                             <div class="control-group" :class="[errors.has('first_name') ? 'has-error' : '']">
                                 <label for="first_name"
-                                       class="required">{{ __('shop::app.customer.account.address.create.first_name') }}</label>
+                                       class="required">{{ __('admin::app.customer.account.address.create.first_name') }}</label>
                                 <input type="text" class="control" name="first_name" v-validate="'required'"
                                        value="{{ old('first_name') }}"
-                                       data-vv-as="&quot;{{ __('shop::app.customer.account.address.create.first_name') }}&quot;">
+                                       data-vv-as="&quot;{{ __('admin::app.customer.account.address.create.first_name') }}&quot;">
                                 <span class="control-error" v-if="errors.has('first_name')">@{{ errors.first('first_name') }}</span>
                             </div>
 
                             <div class="control-group" :class="[errors.has('last_name') ? 'has-error' : '']">
                                 <label for="last_name"
-                                       class="required">{{ __('shop::app.customer.account.address.create.last_name') }}</label>
+                                       class="required">{{ __('admin::app.customer.account.address.create.last_name') }}</label>
                                 <input type="text" class="control" name="last_name" v-validate="'required'"
                                        value="{{ old('last_name') }}"
-                                       data-vv-as="&quot;{{ __('shop::app.customer.account.address.create.last_name') }}&quot;">
+                                       data-vv-as="&quot;{{ __('admin::app.customer.account.address.create.last_name') }}&quot;">
                                 <span class="control-error" v-if="errors.has('last_name')">@{{ errors.first('last_name') }}</span>
                             </div>
 
                             <div class="control-group" :class="[errors.has('vat_id') ? 'has-error' : '']">
-                                <label for="vat_id">{{ __('shop::app.customer.account.address.create.vat_id') }}</label>
+                                <label for="vat_id">{{ __('admin::app.customer.account.address.create.vat_id') }}</label>
                                 <input type="text" class="control" name="vat_id" v-validate=""
                                        value="{{ old('vat_id') }}"
-                                       data-vv-as="&quot;{{ __('shop::app.customer.account.address.create.vat_id') }}&quot;">
+                                       data-vv-as="&quot;{{ __('admin::app.customer.account.address.create.vat_id') }}&quot;">
                                 <span class="control-error"
                                       v-if="errors.has('vat_id')">@{{ errors.first('vat_id') }}</span>
                             </div>
 
                             <div class="control-group" :class="[errors.has('address1[]') ? 'has-error' : '']">
                                 <label for="address_0"
-                                       class="required">{{ __('shop::app.customer.account.address.edit.street-address') }}</label>
+                                       class="required">{{ __('admin::app.customer.account.address.edit.street-address') }}</label>
                                 <input type="text" class="control" name="address1[]" id="address_0"
                                        v-validate="'required'" value="{{ old('address1') }}"
-                                       data-vv-as="&quot;{{ __('shop::app.customer.account.address.create.street-address') }}&quot;">
+                                       data-vv-as="&quot;{{ __('admin::app.customer.account.address.create.street-address') }}&quot;">
                                 <span class="control-error" v-if="errors.has('address1[]')">@{{ errors.first('address1[]') }}</span>
                             </div>
 
@@ -92,10 +92,10 @@
 
                             <div class="control-group" :class="[errors.has('city') ? 'has-error' : '']">
                                 <label for="city"
-                                       class="required">{{ __('shop::app.customer.account.address.create.city') }}</label>
+                                       class="required">{{ __('admin::app.customer.account.address.create.city') }}</label>
                                 <input type="text" class="control" name="city"
                                        v-validate="'required|regex:^[a-zA-Z \-]*$'" value="{{ old('city') }}"
-                                       data-vv-as="&quot;{{ __('shop::app.customer.account.address.create.city') }}&quot;">
+                                       data-vv-as="&quot;{{ __('admin::app.customer.account.address.create.city') }}&quot;">
                                 <span class="control-error" v-if="errors.has('city')">@{{ errors.first('city') }}</span>
                             </div>
 
@@ -103,19 +103,19 @@
 
                             <div class="control-group" :class="[errors.has('postcode') ? 'has-error' : '']">
                                 <label for="postcode"
-                                       class="required">{{ __('shop::app.customer.account.address.create.postcode') }}</label>
+                                       class="required">{{ __('admin::app.customer.account.address.create.postcode') }}</label>
                                 <input type="text" class="control" name="postcode" v-validate="'required'"
                                        value="{{ old('postcode') }}"
-                                       data-vv-as="&quot;{{ __('shop::app.customer.account.address.create.postcode') }}&quot;">
+                                       data-vv-as="&quot;{{ __('admin::app.customer.account.address.create.postcode') }}&quot;">
                                 <span class="control-error" v-if="errors.has('postcode')">@{{ errors.first('postcode') }}</span>
                             </div>
 
                             <div class="control-group" :class="[errors.has('phone') ? 'has-error' : '']">
                                 <label for="phone"
-                                       class="required">{{ __('shop::app.customer.account.address.create.phone') }}</label>
+                                       class="required">{{ __('admin::app.customer.account.address.create.phone') }}</label>
                                 <input type="text" class="control" name="phone" v-validate="'required'"
                                        value="{{ old('phone') }}"
-                                       data-vv-as="&quot;{{ __('shop::app.customer.account.address.create.phone') }}&quot;">
+                                       data-vv-as="&quot;{{ __('admin::app.customer.account.address.create.phone') }}&quot;">
                                 <span class="control-error"
                                       v-if="errors.has('phone')">@{{ errors.first('phone') }}</span>
                             </div>
