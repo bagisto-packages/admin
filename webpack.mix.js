@@ -8,9 +8,9 @@ mix.disableNotifications();
 mix.setPublicPath(publicPath).mergeManifest();
 
 mix
-    .js(__dirname + "/src/Resources/assets/js/app.js", "js/admin.js")
-    .sass(__dirname + "/src/Resources/assets/sass/app.scss", "css/admin.css")
-    .copy(__dirname + "/src/Resources/assets/js/tinyMCE", publicPath + "/js/tinyMCE")
+    .js(__dirname + "/src/resources/assets/js/app.js", "js/admin.js")
+    .sass(__dirname + "/src/resources/assets/sass/app.scss", "css/admin.css")
+    .copy(__dirname + "/src/resources/assets/js/tinyMCE", publicPath + "/js/tinyMCE")
     .options({
         processCssUrls: false
     });

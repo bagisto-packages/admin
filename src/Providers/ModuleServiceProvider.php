@@ -64,10 +64,10 @@ class ModuleServiceProvider extends BaseModuleServiceProvider
         Event::listen('sales.refund.save.after', 'BagistoPackages\Admin\Listeners\Order@sendNewRefundMail');
         Event::listen('sales.order.comment.create.after', 'BagistoPackages\Admin\Listeners\Order@sendOrderCommentMail');
 
-        $this->loadTranslationsFrom(__DIR__ . '/../Resources/lang', 'admin');
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'admin');
 
         $this->publishes([
-            __DIR__ . '/../Resources/lang' => resource_path('lang/vendor/admin'),
+            __DIR__ . '/../resources/lang' => resource_path('lang/vendor/admin'),
         ]);
 
         $this->publishes([
@@ -85,9 +85,9 @@ class ModuleServiceProvider extends BaseModuleServiceProvider
 
     protected function registerConfig()
     {
-        $this->mergeConfigFrom(dirname(__DIR__) . '/Resources/config/menu.php', 'menu.admin');
-        $this->mergeConfigFrom(dirname(__DIR__) . '/Resources/config/acl.php', 'acl');
-        $this->mergeConfigFrom(dirname(__DIR__) . '/Resources/config/core.php', 'core');
+        $this->mergeConfigFrom(dirname(__DIR__) . '/resources/config/menu.php', 'menu.admin');
+        $this->mergeConfigFrom(dirname(__DIR__) . '/resources/config/acl.php', 'acl');
+        $this->mergeConfigFrom(dirname(__DIR__) . '/resources/config/core.php', 'core');
     }
 
     protected function registerBouncer()

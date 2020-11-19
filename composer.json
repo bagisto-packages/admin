@@ -14,7 +14,7 @@
         ],
         "psr-4": {
             "BagistoPackages\\Admin\\": "src/",
-            "BagistoPackages\\Admin\\Seeds\\": "src/Resources/database/seeds"
+            "BagistoPackages\\Admin\\Seeds\\": "src/resources/database/seeds"
         }
     },
     "config": {
