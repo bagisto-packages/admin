@@ -167,12 +167,12 @@ class Order
     /**
      * Get the locale of the customer if somehow item name changes then the english locale will pe provided.
      *
-     * @param object \BagistoPackages\Sales\Contracts\Order|\BagistoPackages\Sales\Contracts\Invoice|\BagistoPackages\Sales\Contracts\Refund|\BagistoPackages\Sales\Contracts\Shipment|\BagistoPackages\Sales\Contracts\OrderComment
+     * @param object \BagistoPackages\Shop\Contracts\Order|\BagistoPackages\Shop\Contracts\Invoice|\BagistoPackages\Shop\Contracts\Refund|\BagistoPackages\Shop\Contracts\Shipment|\BagistoPackages\Shop\Contracts\OrderComment
      * @return string
      */
     private function getLocale($object)
     {
-        if ($object instanceof \BagistoPackages\Sales\Contracts\OrderComment) {
+        if ($object instanceof \BagistoPackages\Shop\Contracts\OrderComment) {
             $object = $object->order;
         }
 
